@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QSqlTableModel>
 #include "connection.h"
+#include "rechercher.h"
+#include "supprimer.h"
+#include "modifier.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +24,15 @@ private slots:
     void on_AjouterBouton_clicked();
 
     void on_tabWidget_currentChanged(int index);
+
+    void on_pushButton_3_clicked();
+
+
+    void on_pushButton_16_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -3,6 +3,7 @@
 #include "QTabWidget"
 #include "QString"
 #include "ajouter.h"
+#include "rechercher.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -63,6 +64,76 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 
          ui->tableView->setModel(model);
          ui->tableView->resizeColumnsToContents();
+    }
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    //rechercher dans modifier
+    QString isbn = ui->lineEdit_10->text();
+    if (!rechercherEtRemplirFormulaire(isbn, ui->lineEditMTitre, ui->lineEditMAuteur, ui->lineEditMGenre, ui->lineEditMAnnee, ui->lineEditMISBN)) {
+        ui->statusbar->showMessage("Aucun résultat trouvé pour l'ISBN fourni.");
+    } else {
+        ui->statusbar->showMessage("Formulaire rempli avec les résultats de la recherche.");
+    }
+}
+
+void MainWindow::on_pushButton_16_clicked()
+{
+    //rechercher dans supprimer
+    QString isbn = ui->lineEdit_53->text();
+    if (!rechercherEtRemplirFormulaire(isbn, ui->lineEditSTitre, ui->lineEditSAuteur, ui->lineEditSGenre, ui->lineEditSAnnee, ui->lineEditSISBN)) {
+        ui->statusbar->showMessage("Aucun résultat trouvé pour l'ISBN fourni.");
+    } else {
+        ui->statusbar->showMessage("Formulaire rempli avec les résultats de la recherche.");
+    }
+}
+
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    //bouton de suupression de la base de donnée
+    QString isbn = ui->lineEditSISBN->text();
+        if (isbn.isEmpty()) {
+            ui->statusbar->showMessage("Veuillez rechercher et sélectionner un livre à supprimer.");
+            return;
+        }
+
+        if (supprimerLivre(isbn)) {
+            ui->lineEditATitre->clear();
+            ui->lineEditAAuteur->clear();
+            ui->lineEditAGenre->clear();
+            ui->lineEditAAnnee->clear();
+            ui->lineEditAISBN->clear();
+
+            ui->statusbar->showMessage("Livre supprimé avec succès.");
+            model->select(); // Actualiser la vue du modèle
+        } else {
+            ui->statusbar->showMessage("Erreur lors de la suppression du livre.");
+        }
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    //modifier les éléments éléments de la base donnée
+    QString isbn = ui->lineEditMISBN->text();
+    QString titre = ui->lineEditMTitre->text();
+    QString auteur = ui->lineEditMAuteur->text();
+    QString genre = ui->lineEditMGenre->text();
+    int annee = ui->lineEditMAnnee->text().toInt();
+
+    if(isbn.isEmpty()) {
+        ui->statusbar->showMessage("Veuillez rechercher et sélectionner un livre à mettre à jour.");
+        return;
+    }
+
+    if(mettreAJourLivre(isbn, titre, auteur, genre, annee)) {
+        ui->statusbar->showMessage("Livre mis à jour avec succès.");
+        model->select(); // Actualiser la vue du modèle
+    } else {
+        ui->statusbar->showMessage("Erreur lors de la mise à jour du livre.");
     }
 }
 

@@ -13,13 +13,17 @@ SOURCES += \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
-    rechercher.cpp
+    modifier.cpp \
+    rechercher.cpp \
+    supprimer.cpp
 
 HEADERS += \
     ajouter.h \
     connection.h \
     mainwindow.h \
-    rechercher.h
+    modifier.h \
+    rechercher.h \
+    supprimer.h
 
 FORMS += \
     mainwindow.ui

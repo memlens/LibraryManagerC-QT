@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSqlTableModel>
+#include <QSqlQueryModel>
 #include "connection.h"
 #include "rechercher.h"
 #include "supprimer.h"
@@ -34,8 +35,13 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_comboBox_activated(int index);
+
+    void on_pushButton_17_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;
+    QSqlQueryModel *model2;
 };
 #endif // MAINWINDOW_H

@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , model(new QSqlTableModel(this))
+    , model2(new QSqlQueryModel(this))
 {
     ui->setupUi(this);
 
@@ -101,11 +102,11 @@ void MainWindow::on_pushButton_11_clicked()
         }
 
         if (supprimerLivre(isbn)) {
-            ui->lineEditATitre->clear();
-            ui->lineEditAAuteur->clear();
-            ui->lineEditAGenre->clear();
-            ui->lineEditAAnnee->clear();
-            ui->lineEditAISBN->clear();
+            ui->lineEditSTitre->clear();
+            ui->lineEditSAuteur->clear();
+            ui->lineEditSGenre->clear();
+            ui->lineEditSAnnee->clear();
+            ui->lineEditSISBN->clear();
 
             ui->statusbar->showMessage("Livre supprimé avec succès.");
             model->select(); // Actualiser la vue du modèle
@@ -130,10 +131,40 @@ void MainWindow::on_pushButton_4_clicked()
     }
 
     if(mettreAJourLivre(isbn, titre, auteur, genre, annee)) {
+        ui->lineEditMTitre->clear();
+        ui->lineEditMAuteur->clear();
+        ui->lineEditMGenre->clear();
+        ui->lineEditMAnnee->clear();
+        ui->lineEditMISBN->clear();
+
         ui->statusbar->showMessage("Livre mis à jour avec succès.");
         model->select(); // Actualiser la vue du modèle
     } else {
         ui->statusbar->showMessage("Erreur lors de la mise à jour du livre.");
+    }
+}
+
+
+void MainWindow::on_comboBox_activated(int index)
+{
+    ui->comboBox_2->addItem("ISBN");
+    ui->comboBox_2->addItem("Titre");
+    ui->comboBox_2->addItem("Genre");
+    ui->comboBox_2->addItem("Année");
+}
+
+
+void MainWindow::on_pushButton_17_clicked()
+{
+    QString valeur = ui->lineEdit_54->text();
+    QString categorie = ui->comboBox_2->currentText(); // Récupérer le critère de recherche sélectionné
+
+    if (!rechercherParCategorie(valeur, categorie, model2)) {
+        ui->statusbar->showMessage("Aucun résultat trouvé pour la recherche.");
+    } else {
+        ui->statusbar->showMessage("Vue mise à jour avec les résultats de la recherche.");
+        ui->tableView->setModel(model2);
+        ui->tableView->resizeColumnsToContents();
     }
 }
 

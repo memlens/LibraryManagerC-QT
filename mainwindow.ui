@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabLivres">
      <attribute name="title">
@@ -66,24 +66,6 @@
        <string>RECHERCHER</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_54">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>30</y>
-        <width>51</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>15</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>ISBN</string>
-      </property>
-     </widget>
      <widget class="QTableView" name="tableView">
       <property name="geometry">
        <rect>
@@ -93,6 +75,39 @@
         <height>341</height>
        </rect>
       </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>31</x>
+        <y>20</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="editable">
+       <bool>false</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Titre</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ISBN</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Genre</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Annee</string>
+       </property>
+      </item>
      </widget>
     </widget>
     <widget class="QWidget" name="tabAjouter">
@@ -269,24 +284,6 @@
        <string>RECHERCHER</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_10">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>20</y>
-        <width>51</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>15</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>ISBN</string>
-      </property>
-     </widget>
      <widget class="QWidget" name="formLayoutWidget_3">
       <property name="geometry">
        <rect>
@@ -415,6 +412,24 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="label_54">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>10</y>
+        <width>51</width>
+        <height>38</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ISBN</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tabSupprimer">

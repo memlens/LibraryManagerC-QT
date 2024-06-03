@@ -109,6 +109,24 @@
        </property>
       </item>
      </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>699</x>
+        <y>100</y>
+        <width>91</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Raffraichir</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabAjouter">
      <attribute name="title">

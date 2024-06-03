@@ -168,3 +168,21 @@ void MainWindow::on_pushButton_17_clicked()
     }
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    model->setTable("livres2");
+     model->select();
+
+     // Définissez les en-têtes des colonnes (optionnel)
+     model->setHeaderData(0, Qt::Horizontal, tr("ID"));
+     model->setHeaderData(1, Qt::Horizontal, tr("Titre"));
+     model->setHeaderData(2, Qt::Horizontal, tr("Auteur"));
+     model->setHeaderData(3, Qt::Horizontal, tr("Genre"));
+     model->setHeaderData(4, Qt::Horizontal, tr("Année"));
+     model->setHeaderData(5, Qt::Horizontal, tr("ISBN"));
+
+     ui->tableView->setModel(model);
+     ui->tableView->resizeColumnsToContents();
+}
+
